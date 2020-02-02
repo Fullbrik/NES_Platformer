@@ -45,7 +45,7 @@ void update(void)
   else
   {
     player_vel_y = 0;
-    playery = FLOOR;
+    playery = FLOOR; 
   }
   
   
