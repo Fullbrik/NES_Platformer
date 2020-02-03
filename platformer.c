@@ -22,8 +22,12 @@
 #include "vrambuf.h"
 //#link "vrambuf.c"
 
+byte i, j;
 
+
+#include "tostr.h"
 #include "screen.h"
+#include "collision.h"
 #include "game.h"
 
 
@@ -46,8 +50,38 @@ const char PALETTE[32] = {
 void setup_graphics() {
   // clear sprites
   oam_clear();
+  
+  
   // set palette colors
   pal_all(PALETTE);
+  
+  //vram_adr(NTADR_A(0, 16));
+  //vram_write("_Hello_World123456789101112abcd", 1);
+  
+  vram_adr(NTADR_A(16, 24));
+  vram_put('c');
+  vram_put('d');
+  
+  vram_adr(NTADR_A(14, 20));
+  vram_put('c');
+  vram_put('c');
+  vram_put('c');
+  vram_put('d');
+  vram_put('d');
+  vram_put('d');
+  
+  vram_adr(NTADR_A(16, 14));
+  vram_put('c');
+  vram_put('d');
+  
+  write_collision(16, 24, 'c');
+  write_collision(17, 24, 'd');
+  
+  write_collision(16, 20, 'c');
+  write_collision(17, 20, 'd');
+  
+  write_collision(16, 14, 'c');
+  write_collision(17, 14, 'd');
 }
 
 void main(void)
